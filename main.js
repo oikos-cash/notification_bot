@@ -81,7 +81,10 @@ async function handleSwap(sender, recipient, amount0, amount1, sqrtPriceX96, liq
 
     const messageDiscord = `${
         type === "purchase" ? purchaseMsg : saleMsg
-    }`;
+    }
+    
+<<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>>
+    `;
 
     console.log(`[🛒 Buy Now](${presaleLink}) | [🔗 Tx](${event.log.transactionHash}) | [🌐 X](${twitterLink}) | [📝 Contract](${bscScanContractLink})`)
     try {
