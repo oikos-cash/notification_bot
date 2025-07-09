@@ -58,7 +58,7 @@ async function handleSwap(sender, recipient, amount0, amount1, sqrtPriceX96, liq
 
     const purchaseMsg = `
 📢**New ${type} Incoming**
-🧑**Router:** ${recipient}
+🧑**From:** ${sender}
 🔹**Purchased:** ${commify(Number(formatEther(amount0)) * -1, 4)} OKS
 💰**Spent:** ${commify(Number(formatEther(amount1)), 4)} BNB
 💵**Price:** ${commify(Number(formatEther(amount1)) / Number(formatEther(amount0)) * -1, 7)} BNB    
@@ -66,7 +66,7 @@ async function handleSwap(sender, recipient, amount0, amount1, sqrtPriceX96, liq
     `
     const saleMsg = `
 📢**New ${type} Incoming**
-🧑**Router:** ${recipient}
+🧑**To:** ${recipient}
 🔹**Sold:** ${commify(Number(formatEther(amount0)), 4)} OKS
 💰**For:** ${commify(Number(formatEther(amount1)) * -1, 7)} BNB
 💵**Price:** ${commify(Number(formatEther(amount1)) / Number(formatEther(amount0)) * -1, 7)} BNB    
