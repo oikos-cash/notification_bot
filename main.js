@@ -43,12 +43,23 @@ const imageUrl = './assets/header.png';         // Reemplaza con la URL de la im
 // Configuración del bot de Telegram
 const bot = new TelegramBot(process.env.TELEGRAM_TOKEN, { polling: true });
 
+const uniswapV4Router = "0x1906c1d672b88cD1B9aC7593301cA990F94Eae07";
+const oikosExchange = "0x366C257f84e46105a76F53391B260717aac80D70";
+
 async function handleSwap(sender, recipient, amount0, amount1, sqrtPriceX96, liquidity, tick, event) {
     
+    let type, protocol;
+
+    if (sender == uniswapV4Router || recipient == uniswapV4Router) {
+        protocol = "Uniswap"
+    } else if (sender == oikosExchange || recipient == oikosExchange) {
+        protocol = "Oikos Exchange"
+    } else {
+        protocol = "Other (Unknown)"
+    }
+
     const txHash = event.log.transactionHash;
     const bscScanTxLink = `https://bscscan.com/tx/${txHash}`;
-
-    let type;
 
     if (Number(formatEther(amount0)) < 0) {
         type = "purchase";
@@ -58,7 +69,7 @@ async function handleSwap(sender, recipient, amount0, amount1, sqrtPriceX96, liq
 
     const purchaseMsg = `
 📢**New ${type} Incoming**
-🧑**From:** ${sender}
+🏦 **Protocol:** ${protocol}
 🔹**Purchased:** ${commify(Number(formatEther(amount0)) * -1, 4)} OKS
 💰**Spent:** ${commify(Number(formatEther(amount1)), 4)} BNB
 💵**Price:** ${commify(Number(formatEther(amount1)) / Number(formatEther(amount0)) * -1, 7)} BNB    
@@ -66,7 +77,7 @@ async function handleSwap(sender, recipient, amount0, amount1, sqrtPriceX96, liq
     `
     const saleMsg = `
 📢**New ${type} Incoming**
-🧑**To:** ${recipient}
+🏦 **Protocol:** ${protocol}
 🔹**Sold:** ${commify(Number(formatEther(amount0)), 4)} OKS
 💰**For:** ${commify(Number(formatEther(amount1)) * -1, 7)} BNB
 💵**Price:** ${commify(Number(formatEther(amount1)) / Number(formatEther(amount0)) * -1, 7)} BNB    
