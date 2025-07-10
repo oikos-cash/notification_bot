@@ -65,6 +65,7 @@ async function handleBorrow(who, borrowAmount, duration, event) {
 🏦 **Borrowed:** ${commify(Number(formatEther(`${borrowAmount}`)), 4)} BNB
 ⏳ **For:** ${Number(`${duration}`) / 86400} days
 
+ [🔗 Tx](${bscScanTxLink})
 <<>><<>><<>><<>><<>><<>><<>><<>
 `;
 
@@ -121,17 +122,14 @@ async function handleSwap(sender, recipient, amount0, amount1, sqrtPriceX96, liq
 💵 **Price:** ${commify(Number(formatEther(amount1)) / Number(formatEther(amount0)) * -1, 7)} BNB    
 📈 **Spot Price:** ${commify(sqrtPriceX96ToPrice(sqrtPriceX96), 7)} BNB    
 `
-    const messageTelegram = `${
-        type === "purchase" ? purchaseMsg : saleMsg
-    }
+    const messageTelegram = `${type === "purchase" ? purchaseMsg : saleMsg}
 
 [🛒 Buy Now](${presaleLink}) | [🔗 Tx](${bscScanTxLink}) | [🌐 X](${twitterLink}) | [📝 Contract](${bscScanContractLink})
     `;    
 
-    const messageDiscord = `${
-        type === "purchase" ? purchaseMsg : saleMsg
-    }
+    const messageDiscord = `${type === "purchase" ? purchaseMsg : saleMsg}
     
+ [🔗 Tx](${bscScanTxLink})    
 <<>><<>><<>><<>><<>><<>><<>><<>
     `;
 
