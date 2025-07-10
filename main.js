@@ -65,7 +65,7 @@ async function handleBorrow(who, borrowAmount, duration, event) {
 🏦 **Borrowed:** ${commify(Number(formatEther(`${borrowAmount}`)), 4)} BNB
 ⏳ **For:** ${Number(`${duration}`) / 86400} days
 
-<<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>>
+<<>><<>><<>><<>><<>><<>><<>><<>
 `;
 
   const discordChannel = await client.channels.fetch(allowedChannelIds[1]);
@@ -132,7 +132,7 @@ async function handleSwap(sender, recipient, amount0, amount1, sqrtPriceX96, liq
         type === "purchase" ? purchaseMsg : saleMsg
     }
     
-<<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>>
+<<>><<>><<>><<>><<>><<>><<>><<>
     `;
 
     console.log(`[🛒 Buy Now](${presaleLink}) | [🔗 Tx](${event.log.transactionHash}) | [🌐 X](${twitterLink}) | [📝 Contract](${bscScanContractLink})`)
