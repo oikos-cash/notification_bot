@@ -50,3 +50,41 @@ export const SwapEventABI = [
     type: "event"
   }
 ];
+
+export const LendingVaultEvents =[
+  {
+    anonymous: false,
+    inputs: [
+      { indexed: true, internalType: "address", name: "who", type: "address" },
+      { indexed: false, internalType: "uint256", name: "borrowAmount", type: "uint256" },
+      { indexed: false, internalType: "uint256", name: "duration", type: "uint256" }
+    ],
+    name: "Borrow",
+    type: "event"
+  },
+  {
+    anonymous: false,
+    inputs: [
+      { indexed: true, internalType: "address", name: "who", type: "address" }
+    ],
+    name: "Payback",
+    type: "event"
+  },
+  {
+    anonymous: false,
+    inputs: [
+      { indexed: true, internalType: "address", name: "who", type: "address" }
+    ],
+    name: "RollLoan",
+    type: "event"
+  },
+  {
+    anonymous: false,
+    inputs: [
+      { indexed: false, internalType: "uint256", name: "totalBurned", type: "uint256" },
+      { indexed: false, internalType: "uint256", name: "totalLoans", type: "uint256" }
+    ],
+    name: "DefaultLoans",
+    type: "event"
+  }
+];
