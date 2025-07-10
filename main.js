@@ -65,7 +65,7 @@ async function handleBorrow(who, borrowAmount, duration, event) {
 🏦 **Borrowed:** ${commify(Number(formatEther(`${borrowAmount}`)), 4)} BNB
 ⏳ **For:** ${Number(`${duration}`) / 86400} days
 
- [🔗 Tx](${bscScanTxLink})
+ 🔗 ${bscScanTxLink}
 <<>><<>><<>><<>><<>><<>><<>><<>
 `;
 
